@@ -1,0 +1,28 @@
+.float-label {
+  position: relative;
+}
+
+.label {
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 12px;
+  top: 11px;
+  transition: 0.2s ease all;
+}
+
+.as-placeholder {
+  color: gray;
+}
+
+.as-label {
+  top: -10px;
+  font-size: 14px;
+  background: white;
+  padding: 0 4px;
+  margin-left: -4px;
+}
+ .input-text {
+  height: 45px;
+  width: 22vw;
+ }

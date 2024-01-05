@@ -1,0 +1,15 @@
+.brand {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.brand span {
+  color: #fff;
+  height: 40px;
+  width: 70%;
+}
+.nav-link {
+  display: flex;
+  font-size: 15px;
+}
