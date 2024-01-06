@@ -1,127 +1,219 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Table,
-  Typography,
+  Space,
+  Tag,
   Flex,
   Button,
   ConfigProvider,
   Pagination,
+  Input,
+  Typography,
+  Drawer,
 } from "antd";
 import {
   UserAddOutlined,
-  UndoOutlined
-} from '@ant-design/icons';
+  UndoOutlined,
+  FilterOutlined,
+  EditOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 
 import "./styles/styles.css";
 
 const columns = [
   {
-    title: "Name",
+    title: "Họ Tên",
     dataIndex: "name",
-    filters: [
-      {
-        text: "Joe",
-        value: "Joe",
-      },
-      {
-        text: "Category 1",
-        value: "Category 1",
-      },
-      {
-        text: "Category 2",
-        value: "Category 2",
-      },
-    ],
-    filterMode: "tree",
-    filterSearch: true,
-    onFilter: (value, record) => record.name.startsWith(value),
-    width: "30%",
+    key: "name",
+    fixed: "left",
+    width: 150,
+    render: (text) => <a>{text}</a>,
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    sorter: (a, b) => a.age - b.age,
+    title: "Tài khoản",
+    dataIndex: "username",
+    key: "username",
   },
   {
-    title: "Address",
-    dataIndex: "address",
-    filters: [
-      {
-        text: "London",
-        value: "London",
-      },
-      {
-        text: "New York",
-        value: "New York",
-      },
-    ],
-    onFilter: (value, record) => record.address.startsWith(value),
-    filterSearch: true,
-    width: "40%",
+    title: "Vai trò",
+    dataIndex: "role",
+    key: "role",
+  },
+  {
+    title: "Ngày tạo",
+    dataIndex: "create_date",
+    key: "create_date",
+  },
+  {
+    title: "Ngày cập nhật",
+    dataIndex: "update_date",
+    key: "update_date",
+  },
+  {
+    title: "Trạng thái",
+    key: "isActive",
+    dataIndex: "isActive",
+    render: (_, { isActive }) => (
+      <>
+        {isActive ? (
+          <Tag color="green">Hoạt động</Tag>
+        ) : (
+          <Tag color="red">Đã khóa</Tag>
+        )}
+      </>
+    ),
+  },
+  {
+    title: "Action",
+    key: "action",
+    fixed: "right",
+    width: 100,
+    render: (_, record) => (
+      <Space size="small">
+        <Button icon={<EditOutlined />} size="default" />
+        <Button danger icon={<DeleteOutlined />} size="default" />
+      </Space>
+    ),
   },
 ];
 const data = [
   {
     key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
+    name: "Nguyễn Văn A",
+    username: "AAA",
+    create_date: "06/01/2024",
+    update_date: "06/01/2024",
+    role: "manager",
+    isActive: true,
   },
   {
     key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
+    name: "Nguyễn Văn C",
+    username: "CCC",
+    role: "staff",
+    create_date: "06/01/2024",
+    update_date: "06/01/2024",
+    isActive: true,
   },
   {
     key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sydney No. 1 Lake Park",
+    name: "Nguyễn Văn B",
+    username: "BBB",
+    role: "staff",
+    create_date: "06/01/2024",
+    update_date: "06/01/2024",
+    isActive: true,
   },
   {
     key: "4",
-    name: "Jim Red",
-    age: 32,
-    address: "London No. 2 Lake Park",
+    name: "Nguyễn Văn D",
+    username: "DDD",
+    role: "staff",
+    create_date: "06/01/2024",
+    update_date: "06/01/2024",
+    isActive: true,
   },
   {
     key: "5",
-    name: "Jim Red",
-    age: 32,
-    address: "London No. 2 Lake Park",
+    name: "Nguyễn Văn E",
+    username: "EEE",
+    role: "staff",
+    create_date: "06/01/2024",
+    update_date: "06/01/2024",
+    isActive: true,
   },
 ];
-const UserView = () => {
-  const onChange = (pagination, filters, sorter, extra) => {
-    console.log("params", pagination, filters, sorter, extra);
+const UserView = (props) => {
+  const { onSearch } = props;
+  const { Search } = Input;
+  const { Title } = Typography;
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
   };
+  const onClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
-      <Flex gap="middle" vertical className="user-table-container">
-        <Flex
-          gap="small"
-          justify="flex-end"
-          align="center" 
-          style={{padding: '10px'}}>
-          <ConfigProvider>
-            <Button icon={<UndoOutlined />}>Reload</Button>
-            <Button type="primary" icon={<UserAddOutlined />}>Thêm</Button>
-          </ConfigProvider>
+      <Title level={4} strong type="secondary" className="title">
+        QUẢN LÝ TÀI KHOẢN
+      </Title>
+      <Flex vertical>
+        <Flex horizontal>
+          <div className="user-advance-container">
+            <Flex
+              gap="small"
+              justify="flex-start"
+              align="center"
+              style={{ padding: "10px" }}>
+              <ConfigProvider
+                theme={{
+                  token: {
+                    controlHeight: 34,
+                  },
+                }}>
+                <Button onClick={showDrawer} icon={<FilterOutlined />}>
+                  Tìm kiếm nâng cao
+                </Button>
+                <Drawer
+                  title="Tìm kiếm nâng cao"
+                  placement='left'
+                  closable={false}
+                  onClose={onClose}
+                  open={open}
+                  key='left'>
+                  <p>Some contents...</p>
+                  <p>Some contents...</p>
+                  <p>Some contents...</p>
+                </Drawer>
+              </ConfigProvider>
+            </Flex>
+          </div>
         </Flex>
-        <Table
-          columns={columns}
-          dataSource={data}
-          onChange={onChange}
-          pagination={false}
-        />
-        <Flex
-          gap="middle"
-          wrap="wrap"
-          justify="flex-end"
-          align="center"
-          style={{ padding: "15px" }}>
-          <Pagination defaultCurrent={1} total={data.length} pageSize={5} />
+        <Flex gap="small" vertical className="user-table-container">
+          <Flex
+            horizontal
+            gap="small"
+            justify="space-between"
+            align="center"
+            style={{ padding: "10px" }}>
+            <Search
+              placeholder="TÌm kiếm bằng tên..."
+              allowClear
+              onSearch={onSearch}
+              style={{
+                width: 200,
+              }}
+            />
+            <Flex wrap="wrap" gap="small">
+              <ConfigProvider>
+                <Button icon={<UndoOutlined />}>Reload</Button>
+                <Button type="primary" icon={<UserAddOutlined />}>
+                  Thêm
+                </Button>
+              </ConfigProvider>
+            </Flex>
+          </Flex>
+          <Table
+            columns={columns}
+            dataSource={data}
+            pagination={false}
+            scroll={{
+              x: 1100,
+            }}
+          />
+          <Flex
+            gap="middle"
+            wrap="wrap"
+            justify="flex-end"
+            align="center"
+            style={{ padding: "15px" }}>
+            <Pagination defaultCurrent={1} total={data.length} pageSize={5} />
+          </Flex>
         </Flex>
       </Flex>
     </>
