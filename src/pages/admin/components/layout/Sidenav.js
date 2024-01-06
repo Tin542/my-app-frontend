@@ -6,7 +6,7 @@ import {
   UserOutlined,
   ContainerOutlined,
 } from "@ant-design/icons";
-// import logo from "../../assets/images/logo.png";
+import logo from "../../../../assets/pntlogo.png";
 
 function Sidenav({ color }) {
   const { pathname } = useLocation();
@@ -15,11 +15,11 @@ function Sidenav({ color }) {
   return (
     <>
       <div className="brand">
-        {/* <img src={logo} alt="" /> */}
-        <span>PHÒNG CÔNG NGHỆ THÔNG TIN</span>
+        <img src={logo} alt="" />
+        {/* <span>PHÒNG CÔNG NGHỆ THÔNG TIN</span> */}
       </div>
       <hr />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+      <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]}>
         <Menu.Item key="1">
           <NavLink className="nav-link" to="#">
             <AreaChartOutlined />

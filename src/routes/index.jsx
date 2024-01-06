@@ -14,11 +14,12 @@ const AppRouter = () => {
       <Route
         path={ADMIN_PATH.USER}
         element={
-          <UserAdmin />
+          <Main>
+            <UserAdmin />
+          </Main>
         }
         exact
       />
-
       <Route path="/" element={<Navigate replace to={AUTH_PATH.LOGIN} />} />
     </Routes>
   );

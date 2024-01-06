@@ -4,43 +4,41 @@ import { Layout, Menu, Button, theme } from "antd";
 
 import "../styles/styles.css";
 import SideNav from "./Sidenav";
+import Header from "./Header";
+import Footer from "./Footer";
 
 import logo from "../../../../assets/pntlogo.png";
 
 const Main = ({ children }) => {
-  const { Header, Sider, Content } = Layout;
+  const { Header: antHeader, Sider, Content } = Layout;
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const [collapsed, setCollapsed] = useState(false);
   return (
     <Layout hasSider>
       <Sider
-        style={{
-          overflow: "auto",
-          height: "100vh",
-          left: 0,
-          top: 0,
-          bottom: 0,
+      style={{
+        background: colorBgContainer,
+      }}
+        collapsible
+        collapsed={collapsed}
+        breakpoint="lg"
+        onCollapse={(collapsed, type) => {
+          console.log(collapsed, type);
         }}
-        trigger={null}>
+        trigger={null}
+        width={250}>
         <SideNav />
       </Sider>
       <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}></Header>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}>
+        <antHeader className="antd-header">
+          <Header collapsed={collapsed} setCollapsed={setCollapsed} />
+        </antHeader>
+        <Content className="antd-content">
           {children}
         </Content>
+        <Footer />
       </Layout>
     </Layout>
   );
