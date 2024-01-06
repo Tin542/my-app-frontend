@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-
+import { NavLink, Link } from "react-router-dom";
 import { Button, Flex, ConfigProvider, Tooltip } from "antd";
-
 import {
   LogoutOutlined,
   UserOutlined,
@@ -9,7 +8,7 @@ import {
   MenuFoldOutlined,
 } from "@ant-design/icons";
 
-import { NavLink, Link } from "react-router-dom";
+import {AUTH_PATH} from "../../../../constants/path";
 
 const Header = (props) => {
   const { collapsed, setCollapsed } = props;
@@ -29,7 +28,7 @@ const Header = (props) => {
             <Tooltip placement="top" title="Thông tin cá nhân">
               <Button icon={<UserOutlined />} />
             </Tooltip>
-            <Button danger icon={<LogoutOutlined />}>
+            <Button href={AUTH_PATH.LOGIN} danger icon={<LogoutOutlined />}>
               Đăng xuất
             </Button>
           </Flex>

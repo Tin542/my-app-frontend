@@ -112,7 +112,7 @@ const data = [
     role: "staff",
     create_date: "06/01/2024",
     update_date: "06/01/2024",
-    isActive: true,
+    isActive: false,
   },
   {
     key: "5",
@@ -182,7 +182,7 @@ const UserView = (props) => {
             align="center"
             style={{ padding: "10px" }}>
             <Search
-              placeholder="TÌm kiếm bằng tên..."
+              placeholder="Tài khoản..."
               allowClear
               onSearch={onSearch}
               style={{

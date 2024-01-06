@@ -1,0 +1,11 @@
+.title {
+  margin-top: 0;
+}
+.task-table-container {
+  background: white;
+}
+.task-advance-container {
+  background: white;
+  width: 100%;
+  margin-bottom: 10px;
+}

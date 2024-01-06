@@ -5,6 +5,6 @@ export const AUTH_PATH = {
 };
 export const ADMIN_PATH = {
   DASHBOARD: "/admin/dashboard",
-  USER: "/admin/users",
-  TASK: "/admin/task,",
+  USER: "/admin/user",
+  TASK: "/admin/task",
 };

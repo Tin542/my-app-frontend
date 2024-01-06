@@ -11,32 +11,31 @@ import { AUTH_PATH, ADMIN_PATH } from "../../../../constants/path";;
 
 function Sidenav({ color }) {
   const { pathname } = useLocation();
-  const page = pathname.replace("/", "");
+  const page = pathname.replace("/admin/", "");
 
   return (
     <>
       <div className="brand">
         <img src={logo} alt="" />
-        {/* <span>PHÒNG CÔNG NGHỆ THÔNG TIN</span> */}
       </div>
       <hr />
-      <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]}>
-        <Menu.Item key="1">
+      <Menu theme="light" mode="inline" defaultSelectedKeys={[`${page}`]}>
+        <Menu.Item key="dashboard">
           <NavLink className="nav-link" to={ADMIN_PATH.DASHBOARD}>
             <AreaChartOutlined />
-            <span>Dasboard</span>
+            <span>Thống kê</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="2">
+        <Menu.Item key="user">
           <NavLink className="nav-link" to={ADMIN_PATH.USER}>
             <UserOutlined />
-            <span>User</span>
+            <span>Tài khoản</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="3">
+        <Menu.Item key="task">
           <NavLink className="nav-link" to={ADMIN_PATH.TASK}>
             <ContainerOutlined />
-            <span>Task</span>
+            <span>Công việc</span>
           </NavLink>
         </Menu.Item>
       </Menu>
