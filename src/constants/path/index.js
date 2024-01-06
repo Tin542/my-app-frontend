@@ -4,5 +4,7 @@ export const AUTH_PATH = {
   RESET: "/auth/reset",
 };
 export const ADMIN_PATH = {
-    USER: '/admin/users'
-}
+  DASHBOARD: "/admin/dashboard",
+  USER: "/admin/users",
+  TASK: "/admin/task,",
+};

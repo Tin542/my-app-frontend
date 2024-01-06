@@ -7,6 +7,7 @@ import {
   ContainerOutlined,
 } from "@ant-design/icons";
 import logo from "../../../../assets/pntlogo.png";
+import { AUTH_PATH, ADMIN_PATH } from "../../../../constants/path";;
 
 function Sidenav({ color }) {
   const { pathname } = useLocation();
@@ -21,19 +22,19 @@ function Sidenav({ color }) {
       <hr />
       <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]}>
         <Menu.Item key="1">
-          <NavLink className="nav-link" to="#">
+          <NavLink className="nav-link" to={ADMIN_PATH.DASHBOARD}>
             <AreaChartOutlined />
             <span>Dasboard</span>
           </NavLink>
         </Menu.Item>
         <Menu.Item key="2">
-          <NavLink className="nav-link" to="#">
+          <NavLink className="nav-link" to={ADMIN_PATH.USER}>
             <UserOutlined />
             <span>User</span>
           </NavLink>
         </Menu.Item>
         <Menu.Item key="3">
-          <NavLink className="nav-link" to="#">
+          <NavLink className="nav-link" to={ADMIN_PATH.TASK}>
             <ContainerOutlined />
             <span>Task</span>
           </NavLink>
