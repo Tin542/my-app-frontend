@@ -10,6 +10,8 @@ import {
   Input,
   Typography,
   Drawer,
+  Form,
+  Select,
 } from "antd";
 import {
   UserAddOutlined,
@@ -77,57 +79,12 @@ const columns = [
     ),
   },
 ];
-const data = [
-  {
-    key: "1",
-    name: "Nguyễn Văn A",
-    username: "AAA",
-    create_date: "06/01/2024",
-    update_date: "06/01/2024",
-    role: "manager",
-    isActive: true,
-  },
-  {
-    key: "2",
-    name: "Nguyễn Văn C",
-    username: "CCC",
-    role: "staff",
-    create_date: "06/01/2024",
-    update_date: "06/01/2024",
-    isActive: true,
-  },
-  {
-    key: "3",
-    name: "Nguyễn Văn B",
-    username: "BBB",
-    role: "staff",
-    create_date: "06/01/2024",
-    update_date: "06/01/2024",
-    isActive: true,
-  },
-  {
-    key: "4",
-    name: "Nguyễn Văn D",
-    username: "DDD",
-    role: "staff",
-    create_date: "06/01/2024",
-    update_date: "06/01/2024",
-    isActive: false,
-  },
-  {
-    key: "5",
-    name: "Nguyễn Văn E",
-    username: "EEE",
-    role: "staff",
-    create_date: "06/01/2024",
-    update_date: "06/01/2024",
-    isActive: true,
-  },
-];
+
 const UserView = (props) => {
-  const { onSearch } = props;
+  const { onSearch, data } = props;
   const { Search } = Input;
   const { Title } = Typography;
+  const { Option } = Select;
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -161,14 +118,34 @@ const UserView = (props) => {
                 </Button>
                 <Drawer
                   title="Tìm kiếm nâng cao"
-                  placement='left'
+                  placement="left"
                   closable={false}
                   onClose={onClose}
                   open={open}
-                  key='left'>
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
+                  key="left">
+                  <Form layout="vertical">
+                    <Form.Item label="Họ tên" name="fullname">
+                      <Input placeholder="Họ tên" />
+                    </Form.Item>
+                    <Form.Item label="Vai trò" name="role">
+                      <Select placeholder="select role">
+                        <Option value="1">Admin</Option>
+                        <Option value="2">Quản lý</Option>
+                        <Option value="3">Chuyên viên</Option>
+                      </Select>
+                    </Form.Item>
+                    <Form.Item label="Trạng thái" name="status">
+                      <Select placeholder="select role">
+                        <Option value={true}>Hoạt động</Option>
+                        <Option value={false}>Khóa</Option>
+                      </Select>
+                    </Form.Item>
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit">
+                        Tìm kiếm
+                      </Button>
+                    </Form.Item>
+                  </Form>
                 </Drawer>
               </ConfigProvider>
             </Flex>
