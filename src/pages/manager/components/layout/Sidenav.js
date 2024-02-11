@@ -7,7 +7,7 @@ import {
   ContainerOutlined,
 } from "@ant-design/icons";
 import logo from "../../../../assets/pntlogo.png";
-import { AUTH_PATH, ADMIN_PATH } from "../../../../constants/path";;
+import { AUTH_PATH, MANAGER_PATH } from "../../../../constants/path";;
 
 function Sidenav({ color }) {
   const { pathname } = useLocation();
@@ -20,28 +20,17 @@ function Sidenav({ color }) {
       </div>
       <hr />
       <Menu theme="light" mode="inline" defaultSelectedKeys={[`${page}`]}>
-        <Menu.Item key="dashboard">
-          <NavLink className="nav-link" to={ADMIN_PATH.DASHBOARD}>
-            <AreaChartOutlined />
-            <span>Thống kê</span>
-          </NavLink>
-        </Menu.Item>
+        
         <Menu.Item key="user">
-          <NavLink className="nav-link" to={ADMIN_PATH.USER}>
+          <NavLink className="nav-link" to={MANAGER_PATH.USER}>
             <UserOutlined />
             <span>Tài khoản</span>
           </NavLink>
         </Menu.Item>
         <Menu.Item key="task">
-          <NavLink className="nav-link" to={ADMIN_PATH.TASK}>
+          <NavLink className="nav-link" to={MANAGER_PATH.TASK}>
             <ContainerOutlined />
             <span>Công việc</span>
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="product">
-          <NavLink className="nav-link" to={ADMIN_PATH.PRODUCT}>
-            <ContainerOutlined />
-            <span>Sản phẩm</span>
           </NavLink>
         </Menu.Item>
       </Menu>

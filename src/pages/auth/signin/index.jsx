@@ -12,7 +12,7 @@ const SignIn = () => {
   const onFinish = (values) => {
     console.log("Success:", values);
     if (values.username && values.password) {
-      navigate(ADMIN_PATH.USER);
+      navigate(ADMIN_PATH.DASHBOARD);
     }
   };
   const onFinishFailed = (errorInfo) => {
