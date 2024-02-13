@@ -1,10 +1,13 @@
 import React from "react";
 import AdminRouter from "../pages/admin/routes";
-import CUstomerRouter from "../pages/customer/routes";
+import CustomerRouter from "../pages/customer/routes";
 
 const AppRouter = () => {
   return (
-    <AdminRouter/>
+    <>
+      {/* <AdminRouter /> */}
+      <CustomerRouter />
+    </>
   );
 };
 export default AppRouter;

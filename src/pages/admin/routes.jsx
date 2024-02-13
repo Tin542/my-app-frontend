@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { AUTH_PATH, ADMIN_PATH, HOME_URL } from "../../constants/path/index";
+import { AUTH_PATH, ADMIN_PATH } from "../../constants/path/index";
 
 import AdminMain from "./components/layout/Main";
 
@@ -12,39 +12,17 @@ import ProductAdmin from "./manageProduct";
 
 const HomeRouter = () => {
   return (
-    <Routes>
-      <Route path={AUTH_PATH.LOGIN} element={<SignInPage />} exact />
-      {/* Admin */}
-      <Route
-        path={ADMIN_PATH.DASHBOARD}
-        element={
-          <AdminMain>
-            <Dashboard />
-          </AdminMain>
-        }
-        exact
-      />
-      <Route
-        path={ADMIN_PATH.USER}
-        element={
-          <AdminMain>
-            <UserAdmin />
-          </AdminMain>
-        }
-        exact
-      />
-      <Route
-        path={ADMIN_PATH.PRODUCT}
-        element={
-          <AdminMain>
-            <ProductAdmin />
-          </AdminMain>
-        }
-        exact
-      />
-      <Route />
-      <Route path="/" element={<Navigate replace to={HOME_URL.INDEX} />} />
-    </Routes>
+    <AdminMain>
+      <Routes>
+        <Route path={AUTH_PATH.LOGIN} element={<SignInPage />} exact />
+        {/* Admin */}
+        <Route path={ADMIN_PATH.DASHBOARD} element={<Dashboard />} exact />
+        <Route path={ADMIN_PATH.USER} element={<UserAdmin />} exact />
+        <Route path={ADMIN_PATH.PRODUCT} element={<ProductAdmin />} exact />
+        <Route />
+        <Route path="/" element={<Navigate replace to={ADMIN_PATH.DASHBOARD} />} />
+      </Routes>
+    </AdminMain>
   );
 };
 export default HomeRouter;

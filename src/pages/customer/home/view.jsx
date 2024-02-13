@@ -5,7 +5,7 @@ const HomeView = (props) => {
 
   return (
     <>
-      
+      <h1>HOME PAGEs</h1>
     </>
   );
 };
