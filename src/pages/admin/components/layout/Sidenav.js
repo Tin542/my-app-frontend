@@ -32,12 +32,6 @@ function Sidenav({ color }) {
             <span>Tài khoản</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="task">
-          <NavLink className="nav-link" to={ADMIN_PATH.TASK}>
-            <ContainerOutlined />
-            <span>Công việc</span>
-          </NavLink>
-        </Menu.Item>
         <Menu.Item key="product">
           <NavLink className="nav-link" to={ADMIN_PATH.PRODUCT}>
             <ContainerOutlined />

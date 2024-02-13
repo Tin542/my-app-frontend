@@ -15,3 +15,6 @@ export const MANAGER_PATH = {
   USER: "/manager/user",
   TASK: "/manager/task",
 }
+export const HOME_URL = {
+  INDEX: "/home"
+}

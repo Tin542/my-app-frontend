@@ -111,7 +111,7 @@ const ProductView = (props) => {
   return (
     <>
       <Title level={4} strong type="secondary" className="title">
-        QUẢN LÝ CÔNG VIỆC
+        QUẢN LÝ SẢN PHẨM
       </Title>
       <Flex vertical>
         <Flex horizontal>
