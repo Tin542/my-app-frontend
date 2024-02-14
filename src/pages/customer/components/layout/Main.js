@@ -6,6 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 import logo from "../../../../assets/logo.png";
+import "../styles/style.css"
 
 const Main = ({ children }) => {
   const { Header: antHeader, Content } = Layout;

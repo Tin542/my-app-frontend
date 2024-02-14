@@ -21,9 +21,6 @@ const Header = (props) => {
     <ConfigProvider
       theme={{
         components: {
-          Button: {
-            /* here is your component tokens */
-          },
           Menu: {
             horizontalLineHeight: '70px'
           },
