@@ -7,7 +7,7 @@ import SideNav from "./Sidenav";
 import Header from "./Header";
 import Footer from "./Footer";
 
-import logo from "../../../../assets/pntlogo.png";
+import logo from "../../../../assets/logo.png";
 
 const Main = ({ children }) => {
   const { Header: antHeader, Sider, Content } = Layout;

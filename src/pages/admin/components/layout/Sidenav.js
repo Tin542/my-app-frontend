@@ -6,7 +6,7 @@ import {
   UserOutlined,
   ContainerOutlined,
 } from "@ant-design/icons";
-import logo from "../../../../assets/pntlogo.png";
+import logo from "../../../../assets/logo.png";
 import { AUTH_PATH, ADMIN_PATH } from "../../../../constants/path";;
 
 function Sidenav({ color }) {
