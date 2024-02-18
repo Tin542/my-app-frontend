@@ -1,84 +1,100 @@
-import { Layout, Row, Col, ConfigProvider } from "antd";
-import { HeartFilled } from "@ant-design/icons";
+import { Row, Col, ConfigProvider } from "antd";
+import {
+  FacebookOutlined,
+  InstagramOutlined,
+  YoutubeOutlined,
+} from "@ant-design/icons";
+import "../styles/footer.css";
 
+import footerLogo from "../../../../assets/footer-logo.png";
+import product3 from "../../../../assets/product3.png";
+import product4 from "../../../../assets/product4.png";
+import product5 from "../../../../assets/product5.png";
+import product6 from "../../../../assets/product6.png";
+import product7 from "../../../../assets/product7.png";
+import product8 from "../../../../assets/product8.png";
 function Footer() {
-  const { Footer: AntFooter } = Layout;
-
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Layout: {
-            footerBg: "#224e33",
-            footerPadding: "20px",
-          },
-        },
-      }}>
+    <ConfigProvider>
       <div class="footer-container">
-        <img class="logo" src="image/footer-logo.png" alt="logo" />
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="footer-category">
-                <p>Chăm sóc khách hàng</p>
-                <p class="footer-info">(+84) 123 456 789</p>
-              </div>
+        <img class="logo" src={footerLogo} alt="logo" />
+        <Row align="top" gutter={[32, 24]}>
+          <Col span={6}>
+            <div class="footer-category">
+              <p>Chăm sóc khách hàng</p>
+              <p class="footer-info">(+84) 123 456 789</p>
             </div>
-            <div class="col-sm-3">
-              <div class="footer-category">
-                <p>Liên hệ với chúng tôi</p>
-                <p class="footer-info">Mail: support@gmail.com</p>
-                <p>Hoặc</p>
-                <p class="footer-info">
+          </Col>
+          <Col span={6}>
+            <div class="footer-category">
+              <p>Liên hệ với chúng tôi</p>
+              <p class="footer-info">Mail: support@gmail.com</p>
+              <p>Hoặc</p>
+              <Row align="middle" gutter={[32, 24]}>
+                <Col>
                   <a href="#">
-                    <i class="fab fa-instagram"></i>
+                    <FacebookOutlined className="footer-contact-facebook"/>
                   </a>
+                </Col>
+                <Col>
                   <a href="#">
-                    <i class="fab fa-facebook-square"></i>
+                    <InstagramOutlined className="footer-contact-instagram"/>
                   </a>
+                </Col>
+                <Col>
                   <a href="#">
-                    <i class="fab fa-twitter-square"></i>
+                    <YoutubeOutlined className="footer-contact-youtube" style={{ fontSize: 37 }} />
                   </a>
-                  <a href="#">
-                    <i class="fab fa-youtube"></i>
-                  </a>
-                </p>
-              </div>
+                </Col>
+              </Row>
             </div>
-            <div class="col-sm-3">
-              <div class="footer-category">
-                <p>Dịch vụ</p>
-                <ul class="footer-info">
-                  <li>
-                    <a href="#">Chính sách và điều khoản</a>
-                  </li>
-                  <li>
-                    <a href="#">Hướng dẫn thanh toán</a>
-                  </li>
-                  <li>
-                    <a href="#">Đổi trả và hoàn tiền</a>
-                  </li>
-                  <li>
-                    <a href="#">FAQ</a>
-                  </li>
-                </ul>
-              </div>
+          </Col>
+          <Col span={6}>
+            <div class="footer-category">
+              <p>Dịch vụ</p>
+              <p>
+                <a className="footer-services" href="#">Chính sách và điều khoản</a>
+              </p>
+              <p>
+                <a className="footer-services" href="#">Chính sách và điều khoản</a>
+              </p>
+              <p>
+                <a className="footer-services" href="#">Hướng dẫn thanh toán</a>
+              </p>
+              <p>
+                <a className="footer-services" href="#">Đổi trả và hoàn tiền</a>
+              </p>
+              <p>
+                <a className="footer-services" href="#">FAQ</a>
+              </p>
             </div>
-            <div class="col-sm-3">
-              <div class="footer-category">
-                <p>Ảnh khác</p>
-                <div class="footer-items">
-                  <img src="image/product3.png" />
-                  <img src="image/product5.png" />
-                  <img src="image/product6.png" />
-                  <img src="image/product7.png" />
-                  <img src="image/product4.png" />
-                  <img src="image/product8.png" />
-                </div>
-              </div>
+          </Col>
+          <Col span={6}>
+            <div class="footer-category">
+              <p>Ảnh khác</p>
+              <Row gutter={[16, 16]}>
+                <Col span={8}>
+                  <img src={product3} className="footer-more-product"/>
+                </Col>
+                <Col span={8}>
+                  <img src={product4} className="footer-more-product"/>
+                </Col>
+                <Col span={8}>
+                  <img src={product5} className="footer-more-product"/>
+                </Col>
+                <Col span={8}>
+                  <img src={product6} className="footer-more-product"/>
+                </Col>
+                <Col span={8}>
+                  <img src={product7} className="footer-more-product"/>
+                </Col>
+                <Col span={8}>
+                  <img src={product8} className="footer-more-product"/>
+                </Col>
+              </Row>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </div>
     </ConfigProvider>
   );
