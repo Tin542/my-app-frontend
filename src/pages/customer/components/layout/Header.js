@@ -22,13 +22,12 @@ const Header = (props) => {
       theme={{
         components: {
           Menu: {
-            horizontalLineHeight: '70px'
+            horizontalLineHeight: "70px",
           },
         },
         token: {
           colorPrimary: "#00b96b",
         },
-        
       }}>
       <Flex gap="middle" vertical>
         <Flex gap="small" justify="space-between">
@@ -58,7 +57,7 @@ const Header = (props) => {
             </Flex>
           </Flex>
           <Flex gap="small" justify="flex-end" align="center">
-            <Tooltip placement="top" title="giỏ hàng">
+            {/* <Tooltip placement="top" title="giỏ hàng">
               <Button icon={<ShoppingCartOutlined />} />
             </Tooltip>
             <Tooltip placement="top" title="Thông tin cá nhân">
@@ -66,6 +65,9 @@ const Header = (props) => {
             </Tooltip>
             <Button href={AUTH_PATH.LOGIN} danger icon={<LogoutOutlined />}>
               Đăng xuất
+            </Button> */}
+            <Button href={AUTH_PATH.LOGIN} icon={<LogoutOutlined />}>
+              Đăng nhập
             </Button>
           </Flex>
         </Flex>
