@@ -2,11 +2,11 @@ import React from "react";
 import { Button, Input, Form, Flex, Typography, ConfigProvider } from "antd";
 import { Link } from "react-router-dom";
 
-import { username, password } from "./validate";
+import { username, password, fullname, email } from "./validate";
 import { AUTH_PATH } from "../../../constants/path";
 import "./styles/styles.css";
 
-const SignInView = (props) => {
+const SignUpView = (props) => {
   const { onFinish, onFinishFailed } = props;
   const { Text } = Typography;
   return (
@@ -24,10 +24,16 @@ const SignInView = (props) => {
           onFinishFailed={onFinishFailed}
           autoComplete="off">
           <Typography.Title type="success" className="login-title">
-            Đăng nhập
+            Đăng ký
           </Typography.Title>
           <Form.Item name="username" rules={username}>
             <Input className="input-box" type="text" label="Tài khoản" placeholder="Tài khoản" />
+          </Form.Item>
+          <Form.Item name="fullname" rules={fullname}>
+            <Input className="input-box" type="text" label="Họ tên" placeholder="Họ tên" />
+          </Form.Item>
+          <Form.Item name="email" rules={email}>
+            <Input className="input-box" type="text" label="Email" placeholder="Email" />
           </Form.Item>
 
           <Form.Item name="password" rules={password}>
@@ -37,11 +43,8 @@ const SignInView = (props) => {
           <Flex align="center" justify="space-between" className="sign-up-link">
             <Flex>
               <Text>
-                Chưa có tài khoản? <Link to={AUTH_PATH.REGISTER}>Tạo ngay</Link>
+                Đã có tài khoản? <Link to={AUTH_PATH.LOGIN}>Đăng nhập</Link>
               </Text>
-            </Flex>
-            <Flex>
-              <Link href="#">Quên mật khẩu</Link>
             </Flex>
           </Flex>
 
@@ -57,7 +60,7 @@ const SignInView = (props) => {
                 type="primary"
                 htmlType="submit"
                 block>
-                Đăng nhập
+                Đăng ký
               </Button>
             </Flex>
           </Form.Item>
@@ -66,4 +69,4 @@ const SignInView = (props) => {
     </div>
   );
 };
-export default SignInView;
+export default SignUpView;
