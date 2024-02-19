@@ -10,10 +10,11 @@ export const ADMIN_PATH = {
   TASK: "/admin/task",
   PRODUCT: "/admin/product"
 };
-export const MANAGER_PATH = {
-  INDEX: "/manager",
-  USER: "/manager/user",
-  TASK: "/manager/task",
+export const CUSTOMER_PATH = {
+  INDEX: "/home",
+  PRODUCT: "/customer/product",
+  USER: "/customer/user",
+  TASK: "/customer/task",
 }
 export const HOME_URL = {
   INDEX: "/home"

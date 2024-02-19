@@ -2,17 +2,31 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import SignInView from "./view";
-import { ADMIN_PATH } from "../../../constants/path";
+import { loginService } from "./services";
+import { ADMIN_PATH, CUSTOMER_PATH } from "../../../constants/path";
+import { ROLE_ADMIN, ROLE_CUSTOMER } from "../../../constants/app/role";
+import { loginFail, loginSuccess } from "../../../notifications/auth.notification";
 
 const SignIn = () => {
-  const [errMsg, setErrMsg] = useState("");
 
   const navigate = useNavigate();
 
   const onFinish = (values) => {
-    console.log("Success:", values);
     if (values.username && values.password) {
-      navigate(ADMIN_PATH.DASHBOARD);
+      loginService(values)
+        .then((rs) => {
+          let result = rs.data;
+          console.log(result);
+          if (result.data.role === ROLE_CUSTOMER) {
+            loginSuccess('Đăng nhập thành công')
+            navigate(CUSTOMER_PATH.INDEX);
+          }
+        })
+        .catch((err) => {
+          console.log("Error:", err.response.data.msg);
+          loginFail(err.response.data.msg)
+        });
+      // navigate(ADMIN_PATH.DASHBOARD);
     }
   };
   const onFinishFailed = (errorInfo) => {
@@ -20,7 +34,6 @@ const SignIn = () => {
   };
   return (
     <SignInView
-      errMsg={errMsg}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     />
