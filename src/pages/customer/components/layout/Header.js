@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Button, Flex, ConfigProvider, Tooltip, Menu } from "antd";
+import { useSelector } from "react-redux";
 
 import {
   LogoutOutlined,
@@ -8,11 +9,14 @@ import {
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 
-import { AUTH_PATH } from "../../../../constants/path";
+import { AUTH_PATH, CUSTOMER_PATH } from "../../../../constants/path";
 import logo from "../../../../assets/logo.png";
+import { userSelector } from "../../../../redux-flow/selector";
 
 const Header = (props) => {
   const [current, setCurrent] = useState("home");
+  const user = useSelector(userSelector);
+  console.log(user);
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
@@ -42,7 +46,7 @@ const Header = (props) => {
                 dashed={false}
                 mode="horizontal">
                 <Menu.Item key={"home"} style={{ fontSize: "20px" }}>
-                  Trang chủ
+                  <Link to={CUSTOMER_PATH.INDEX}>Trang chủ</Link>
                 </Menu.Item>
                 <Menu.Item key={"product"} style={{ fontSize: "20px" }}>
                   sản phẩm
@@ -57,18 +61,23 @@ const Header = (props) => {
             </Flex>
           </Flex>
           <Flex gap="small" justify="flex-end" align="center">
-            {/* <Tooltip placement="top" title="giỏ hàng">
-              <Button icon={<ShoppingCartOutlined />} />
-            </Tooltip>
-            <Tooltip placement="top" title="Thông tin cá nhân">
-              <Button icon={<UserOutlined />} />
-            </Tooltip>
-            <Button href={AUTH_PATH.LOGIN} danger icon={<LogoutOutlined />}>
-              Đăng xuất
-            </Button> */}
-            <Button href={AUTH_PATH.LOGIN} icon={<LogoutOutlined />}>
-              Đăng nhập
-            </Button>
+            {user ? (
+              <>
+                <Tooltip placement="top" title="giỏ hàng">
+                  <Button icon={<ShoppingCartOutlined />} />
+                </Tooltip>
+                <Tooltip placement="top" title="Thông tin cá nhân">
+                  <Button icon={<UserOutlined />} />
+                </Tooltip>
+                <Button href={AUTH_PATH.LOGIN} danger icon={<LogoutOutlined />}>
+                  Đăng xuất
+                </Button>
+              </>
+            ) : (
+              <Button href={AUTH_PATH.LOGIN} icon={<LogoutOutlined />}>
+                Đăng nhập
+              </Button>
+            )}
           </Flex>
         </Flex>
       </Flex>
