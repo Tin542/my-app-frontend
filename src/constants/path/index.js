@@ -11,11 +11,14 @@ export const ADMIN_PATH = {
   PRODUCT: "/admin/product"
 };
 export const CUSTOMER_PATH = {
-  INDEX: "/home",
+  INDEX: "customer/home",
   PRODUCT: "/customer/product",
-  USER: "/customer/user",
-  TASK: "/customer/task",
+  SERVICES: "/customer/services",
+  BLOG: "customer/blog"
 }
 export const HOME_URL = {
-  INDEX: "/home"
+  INDEX: "/home",
+  PRODUCT: "/home/product",
+  SERVICES: "/home/services",
+  BLOG: "home/blog"
 }

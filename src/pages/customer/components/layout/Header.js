@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Button, Flex, ConfigProvider, Tooltip, Menu } from "antd";
+import { Button, Flex, ConfigProvider, Tooltip } from "antd";
 import { useSelector } from "react-redux";
-
 import {
   LogoutOutlined,
   UserOutlined,
@@ -16,7 +15,7 @@ import logo from "../../../../assets/logo.png";
 import { userSelector } from "../../../../redux-flow/selector";
 
 const Header = (props) => {
-  const [current, setCurrent] = useState("home");
+  const [current, setCurrent] = useState("Home");
   const user = useSelector(userSelector);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,12 +36,15 @@ const Header = (props) => {
     <ConfigProvider
       theme={{
         components: {
-          Menu: {
-            horizontalLineHeight: "70px",
-          },
+          Button: {
+            contentFontSize: "15px",
+            defaultActiveColor: '#fff',
+            defaultActiveBg: '#224e33',
+            fontWeight: 'bold',
+          }
         },
         token: {
-          colorPrimary: "#00b96b",
+          colorPrimary: "#224e33",
         },
       }}>
       <Flex gap="middle" vertical>
@@ -52,24 +54,10 @@ const Header = (props) => {
           </Flex>
           <Flex gap="small" justify="flex-center" align="center">
             <Flex gap="large" justify="space-between" align="center">
-              <Menu
-                onClick={onClick}
-                selectedKeys={[current]}
-                dashed={false}
-                mode="horizontal">
-                <Menu.Item key={"home"} style={{ fontSize: "20px" }}>
-                  <Link to={CUSTOMER_PATH.INDEX}>Trang chủ</Link>
-                </Menu.Item>
-                <Menu.Item key={"product"} style={{ fontSize: "20px" }}>
-                  sản phẩm
-                </Menu.Item>
-                <Menu.Item key={"service"} style={{ fontSize: "20px" }}>
-                  Dịch vụ
-                </Menu.Item>
-                <Menu.Item key={"Blog"} style={{ fontSize: "20px" }}>
-                  Blog
-                </Menu.Item>
-              </Menu>
+              <Button target style={{color: 'black'}} type="link"><Link to={CUSTOMER_PATH.INDEX}>Trang chủ</Link></Button>
+              <Button style={{color: 'black'}} type="link"><Link to={CUSTOMER_PATH.PRODUCT}>Sản phẩm</Link></Button>
+              <Button style={{color: 'black'}} type="link"> <Link to={CUSTOMER_PATH.SERVICES}>Dịch vụ</Link></Button>
+              <Button style={{color: 'black'}} type="link"> <Link to={CUSTOMER_PATH.BLOG}>Blog</Link></Button>
             </Flex>
           </Flex>
           <Flex gap="small" justify="flex-end" align="center">
@@ -86,7 +74,7 @@ const Header = (props) => {
                 </Button>
               </>
             ) : (
-              <Button href={AUTH_PATH.LOGIN} icon={<LogoutOutlined />}>
+              <Button type="primary" href={AUTH_PATH.LOGIN} icon={<LogoutOutlined />}>
                 Đăng nhập
               </Button>
             )}
