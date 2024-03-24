@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { Button, Flex, ConfigProvider, Tooltip, Menu } from "antd";
 import { useSelector } from "react-redux";
 
@@ -8,19 +8,31 @@ import {
   UserOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
 
 import { AUTH_PATH, CUSTOMER_PATH } from "../../../../constants/path";
+import { handleLogout } from "../../../../redux-flow/action";
 import logo from "../../../../assets/logo.png";
 import { userSelector } from "../../../../redux-flow/selector";
 
 const Header = (props) => {
   const [current, setCurrent] = useState("home");
   const user = useSelector(userSelector);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   console.log(user);
+
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
   };
+
+  const logOut = () => {
+    dispatch(handleLogout({}));
+    navigate(AUTH_PATH.LOGIN);
+  };
+
   return (
     <ConfigProvider
       theme={{
@@ -69,7 +81,7 @@ const Header = (props) => {
                 <Tooltip placement="top" title="Thông tin cá nhân">
                   <Button icon={<UserOutlined />} />
                 </Tooltip>
-                <Button href={AUTH_PATH.LOGIN} danger icon={<LogoutOutlined />}>
+                <Button onClick={logOut} danger icon={<LogoutOutlined />}>
                   Đăng xuất
                 </Button>
               </>
